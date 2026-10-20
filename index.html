@@ -47,6 +47,25 @@ nav a{transition:transform .2s ease,color .2s ease}nav a:hover{transform:transla
 .text-link:hover{color:#195a36;border-bottom-width:2px}
 @media(max-width:650px){.hero{padding-bottom:45px}.hero-portrait{width:250px}.hero-portrait img{max-height:none}}
 @media(prefers-reduced-motion:reduce){.typing-cursor{animation:none;display:none}.hero-portrait:hover,.hero-portrait:focus-visible,.hero-portrait:hover img,.hero-portrait:focus-visible img,.work:hover,.work:focus-within,.research-card:hover,.button:hover,nav a:hover{transform:none}}
+
+/* Sidebar identity and decorative background motion. */
+.aside-bottom{font-weight:700;font-size:12px}.aside-bottom>a{font-weight:800;color:#176c47;letter-spacing:.4px}.aside-bottom>a:hover{color:#105032}
+.sidebar-identity{margin-top:22px}.sidebar-identity strong{display:block;font-size:19px;font-weight:800;line-height:1.4;color:#1b6d43}
+.sidebar-identity span{display:inline-block;margin-top:10px;padding:4px 9px;background:#d3eddf;color:#215d45;font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;border-left:3px solid #278154}
+body{isolation:isolate}
+.ambient-shapes{position:fixed;inset:0 0 0 265px;z-index:-1;overflow:hidden;pointer-events:none}
+.ambient-shape{position:absolute;display:block;will-change:transform}
+.shape-one{width:280px;height:280px;left:4%;top:8%;border:2px solid #24744815;border-radius:46%;background:#b8e2c51c;animation:shape-drift-one 25s ease-in-out infinite alternate}
+.shape-two{width:150px;height:150px;right:6%;top:15%;border:2px solid #2474481c;border-radius:28%;animation:shape-drift-two 30s ease-in-out infinite alternate}
+.shape-three{width:210px;height:210px;right:18%;bottom:4%;border-radius:50%;background:#91cda31a;animation:shape-drift-one 32s ease-in-out -8s infinite alternate-reverse}
+.shape-four{width:75px;height:75px;left:18%;bottom:23%;border:2px solid #24744820;animation:shape-drift-two 24s ease-in-out -12s infinite alternate-reverse}
+@keyframes shape-drift-one{from{transform:translate3d(0,0,0) rotate(0)}to{transform:translate3d(65px,-55px,0) rotate(100deg)}}
+@keyframes shape-drift-two{from{transform:translate3d(0,0,0) rotate(15deg)}to{transform:translate3d(-55px,70px,0) rotate(150deg)}}
+.hero{background:linear-gradient(135deg,#ffffffa8 20%,#e8f6ecb8 100%)}
+.contact{background:#e8f6ecda}
+@media(max-width:900px){.ambient-shapes{left:210px}}
+@media(max-width:650px){.ambient-shapes{left:0;top:75px}.shape-one{width:180px;height:180px}.shape-three{width:150px;height:150px}}
+@media(prefers-reduced-motion:reduce){.ambient-shape{animation:none;will-change:auto}}
 </style>
 </head>
 <body>
@@ -55,9 +74,10 @@ nav a{transition:transform .2s ease,color .2s ease}nav a:hover{transform:transla
 <a class="logo" href="#home" aria-label="Prince home">P<span>.</span></a>
 <p class="aside-role">Personal portfolio</p>
 <button class="menu" type="button" aria-controls="navigation" aria-expanded="false">Menu +</button>
-<nav id="navigation"><a href="#home" class="active"><small>01</small> Home</a><a href="#about"><small>02</small> About me</a><a href="#education"><small>03</small> Education</a><a href="#work"><small>04</small> My work</a><a href="#research"><small>05</small> Research</a><a href="#contact"><small>06</small> Get in touch</a></nav>
-<div class="aside-bottom"><a href="https://github.com/shakibprince83" target="_blank" rel="noopener noreferrer">GitHub ↗</a> &nbsp; / &nbsp; <a href="https://www.linkedin.com/in/md-shakibul-hassan-prince-188310255/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><p>Md. Shakibul Hassan Prince<br>Web Developer</p></div>
+<nav id="navigation"><a href="#home" class="active">Home</a><a href="#about">About me</a><a href="#education">Education</a><a href="#work">My work</a><a href="#research">Research</a><a href="#contact">Get in touch</a></nav>
+<div class="aside-bottom"><a href="https://github.com/shakibprince83" target="_blank" rel="noopener noreferrer">GitHub ↗</a> &nbsp; / &nbsp; <a href="https://www.linkedin.com/in/md-shakibul-hassan-prince-188310255/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><p class="sidebar-identity"><strong>Md. Shakibul<br>Hassan Prince</strong><span>Web Developer</span></p></div>
 </aside>
+<div class="ambient-shapes" aria-hidden="true"><span class="ambient-shape shape-one"></span><span class="ambient-shape shape-two"></span><span class="ambient-shape shape-three"></span><span class="ambient-shape shape-four"></span></div>
 <main id="main">
 <section class="hero" id="home"><div class="hero-inner"><p class="eyebrow">Hello, welcome to my portfolio</p><h1 class="typing-name" aria-label="Md. Shakibul Hassan Prince"><span class="typing-layout" aria-hidden="true">Md. Shakibul<br>Hassan Prince.</span><span class="typing-live" aria-hidden="true"><span id="typed-name">Md. Shakibul<br>Hassan Prince.</span><span class="typing-cursor">|</span></span></h1><p class="role">I'm a Web Developer.</p><p class="intro">Web projects that connect people, support communities and bring practical ideas to life.</p><div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="#contact">Get in touch <span aria-hidden="true">→</span></a></div><a class="scroll" href="#about">SCROLL TO DISCOVER ↓</a></div><div class="hero-portrait" tabindex="0" role="img" aria-label="Portrait of Md. Shakibul Hassan Prince"><img src="./prince-cutout.png" alt="" fetchpriority="high" decoding="async"></div></section>
 <section id="about"><div class="section-head"><span class="number">02 /</span><h2>A little about me.</h2></div><div class="about-layout"><figure class="portrait"><img src="./prince.jpeg" alt="Portrait of Md. Shakibul Hassan Prince" loading="lazy" decoding="async"><figcaption>Md. Shakibul Hassan Prince <span>Web Developer</span></figcaption></figure><div class="about-grid"><div><h3>Hi, I'm Prince.</h3><p>I am Md. Shakibul Hassan Prince, a web developer and a graduate of United International University (UIU).</p><p>My project portfolio includes an agricultural marketplace, a disaster response platform and a civic complaint system. My academic research also explores explainable machine learning for treatment selection and automated rice irrigation. Explore my projects and research below.</p><a class="text-link" href="https://github.com/shakibprince83" target="_blank" rel="noopener noreferrer">Explore my GitHub ↗</a></div><dl class="facts"><div><dt>Name</dt><dd>Md. Shakibul Hassan Prince</dd></div><div><dt>Role</dt><dd>Web Developer</dd></div><div><dt>University</dt><dd>United International University (UIU)</dd></div><div><dt>Education status</dt><dd>Undergraduate degree completed</dd></div></dl></div></div></section>
