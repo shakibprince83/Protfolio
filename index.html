@@ -66,6 +66,41 @@ body{isolation:isolate}
 @media(max-width:900px){.ambient-shapes{left:210px}}
 @media(max-width:650px){.ambient-shapes{left:0;top:75px}.shape-one{width:180px;height:180px}.shape-three{width:150px;height:150px}}
 @media(prefers-reduced-motion:reduce){.ambient-shape{animation:none;will-change:auto}}
+
+/* Continuous, automatic movement with a different colour for each shape. */
+.ambient-shapes{z-index:0}
+main{position:relative;z-index:1}
+.hero{background:linear-gradient(135deg,#ffffff35,#e8f6ec55)}
+.contact{background:#e8f6ec99}
+.shape-one{background:#9b8aee45;border:2px solid #8065d766;border-radius:42%;animation:colour-float-one 14s linear infinite}
+.shape-two{background:#ffb18b50;border:2px solid #ee895966;border-radius:24%;animation:colour-float-two 18s linear -6s infinite}
+.shape-three{background:#78cbe84d;border:2px solid #389abe66;border-radius:50%;animation:colour-float-three 16s linear -8s infinite}
+.shape-four{width:105px;height:105px;background:#f3cf6b55;border:2px solid #cfa43277;animation:colour-float-four 12s linear -3s infinite}
+@keyframes colour-float-one{
+0%{transform:translate3d(0,0,0) rotate(0deg)}
+25%{transform:translate3d(95px,55px,0) rotate(90deg)}
+50%{transform:translate3d(35px,145px,0) rotate(180deg)}
+75%{transform:translate3d(-30px,65px,0) rotate(270deg)}
+100%{transform:translate3d(0,0,0) rotate(360deg)}}
+@keyframes colour-float-two{
+0%{transform:translate3d(0,0,0) rotate(0deg)}
+25%{transform:translate3d(-75px,65px,0) rotate(-90deg)}
+50%{transform:translate3d(-145px,-20px,0) rotate(-180deg)}
+75%{transform:translate3d(-55px,-65px,0) rotate(-270deg)}
+100%{transform:translate3d(0,0,0) rotate(-360deg)}}
+@keyframes colour-float-three{
+0%{transform:translate3d(0,0,0) scale(1)}
+25%{transform:translate3d(-80px,-70px,0) scale(1.1)}
+50%{transform:translate3d(30px,-150px,0) scale(.9)}
+75%{transform:translate3d(90px,-50px,0) scale(1.05)}
+100%{transform:translate3d(0,0,0) scale(1)}}
+@keyframes colour-float-four{
+0%{transform:translate3d(0,0,0) rotate(0deg)}
+25%{transform:translate3d(65px,-90px,0) rotate(90deg)}
+50%{transform:translate3d(130px,0,0) rotate(180deg)}
+75%{transform:translate3d(55px,75px,0) rotate(270deg)}
+100%{transform:translate3d(0,0,0) rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.ambient-shape{animation:none}}
 </style>
 </head>
 <body>
