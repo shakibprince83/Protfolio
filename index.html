@@ -29,6 +29,24 @@ nav a{font-weight:700}
 @media(max-width:1000px){.hero{gap:15px;padding-left:30px;padding-right:20px}.hero h1{font-size:clamp(38px,5vw,58px)}}
 @media(max-width:650px){.hero{grid-template-columns:1fr;padding:65px 25px 0;gap:35px}.hero h1{font-size:clamp(42px,10vw,64px)}.hero-portrait{width:min(100%,340px);justify-self:center}.hero-portrait img{max-height:55svh}.hero .scroll{margin-top:30px}}
 @media(prefers-reduced-motion:reduce){.hero h1{animation:none;transform:none}}
+
+.hero .typing-name{position:relative;animation:none;transform:none;line-height:1.16}
+.typing-layout{display:block;visibility:hidden}
+.typing-live{position:absolute;inset:0;color:var(--text)!important}
+.typing-cursor{color:var(--accent);font-family:Arial,sans-serif;font-weight:400;animation:cursor-blink 1s steps(1) infinite}
+@keyframes cursor-blink{50%{opacity:0}}
+.hero-portrait{align-self:center;justify-self:center;display:block;width:clamp(210px,25vw,320px);max-width:100%;aspect-ratio:1;overflow:hidden;border-radius:50%;border:5px solid #fff;background:radial-gradient(circle at 40% 25%,#f7fff9,#c6e6cf);box-shadow:0 0 0 1px var(--line),0 18px 45px #193d2a18;transition:transform .35s ease,box-shadow .35s ease}
+.hero-portrait img{width:100%;height:100%;max-height:none;object-fit:cover;object-position:center 12%;filter:none;transform:scale(1.04);transition:transform .45s ease}
+.hero-portrait:hover,.hero-portrait:focus-visible{transform:translateY(-5px);box-shadow:0 0 0 3px #91cda3,0 24px 50px #193d2a25;outline:none}
+.hero-portrait:hover img,.hero-portrait:focus-visible img{transform:scale(1.1)}
+.work,.research-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.work:hover,.work:focus-within,.research-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px #193d2a12;border-color:#8cba9b}
+.button{transition:transform .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease}
+.button:hover{transform:translateY(-3px);box-shadow:0 8px 18px #193d2a1a}
+nav a{transition:transform .2s ease,color .2s ease}nav a:hover{transform:translateX(5px)}
+.text-link:hover{color:#195a36;border-bottom-width:2px}
+@media(max-width:650px){.hero{padding-bottom:45px}.hero-portrait{width:250px}.hero-portrait img{max-height:none}}
+@media(prefers-reduced-motion:reduce){.typing-cursor{animation:none;display:none}.hero-portrait:hover,.hero-portrait:focus-visible,.hero-portrait:hover img,.hero-portrait:focus-visible img,.work:hover,.work:focus-within,.research-card:hover,.button:hover,nav a:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -41,7 +59,7 @@ nav a{font-weight:700}
 <div class="aside-bottom"><a href="https://github.com/shakibprince83" target="_blank" rel="noopener noreferrer">GitHub ↗</a> &nbsp; / &nbsp; <a href="https://www.linkedin.com/in/md-shakibul-hassan-prince-188310255/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><p>Md. Shakibul Hassan Prince<br>Web Developer</p></div>
 </aside>
 <main id="main">
-<section class="hero" id="home"><div class="hero-inner"><p class="eyebrow">Hello, welcome to my portfolio</p><h1>Md. Shakibul<br>Hassan <span>Prince.</span></h1><p class="role">I'm a Web Developer.</p><p class="intro">Web projects that connect people, support communities and bring practical ideas to life.</p><div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="#contact">Get in touch <span aria-hidden="true">→</span></a></div><a class="scroll" href="#about">SCROLL TO DISCOVER ↓</a></div><div class="hero-portrait"><img src="./prince-cutout.png" alt="Md. Shakibul Hassan Prince" fetchpriority="high" decoding="async"></div></section>
+<section class="hero" id="home"><div class="hero-inner"><p class="eyebrow">Hello, welcome to my portfolio</p><h1 class="typing-name" aria-label="Md. Shakibul Hassan Prince"><span class="typing-layout" aria-hidden="true">Md. Shakibul<br>Hassan Prince.</span><span class="typing-live" aria-hidden="true"><span id="typed-name">Md. Shakibul<br>Hassan Prince.</span><span class="typing-cursor">|</span></span></h1><p class="role">I'm a Web Developer.</p><p class="intro">Web projects that connect people, support communities and bring practical ideas to life.</p><div class="actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↗</span></a><a class="button" href="#contact">Get in touch <span aria-hidden="true">→</span></a></div><a class="scroll" href="#about">SCROLL TO DISCOVER ↓</a></div><div class="hero-portrait" tabindex="0" role="img" aria-label="Portrait of Md. Shakibul Hassan Prince"><img src="./prince-cutout.png" alt="" fetchpriority="high" decoding="async"></div></section>
 <section id="about"><div class="section-head"><span class="number">02 /</span><h2>A little about me.</h2></div><div class="about-layout"><figure class="portrait"><img src="./prince.jpeg" alt="Portrait of Md. Shakibul Hassan Prince" loading="lazy" decoding="async"><figcaption>Md. Shakibul Hassan Prince <span>Web Developer</span></figcaption></figure><div class="about-grid"><div><h3>Hi, I'm Prince.</h3><p>I am Md. Shakibul Hassan Prince, a web developer and a graduate of United International University (UIU).</p><p>My project portfolio includes an agricultural marketplace, a disaster response platform and a civic complaint system. My academic research also explores explainable machine learning for treatment selection and automated rice irrigation. Explore my projects and research below.</p><a class="text-link" href="https://github.com/shakibprince83" target="_blank" rel="noopener noreferrer">Explore my GitHub ↗</a></div><dl class="facts"><div><dt>Name</dt><dd>Md. Shakibul Hassan Prince</dd></div><div><dt>Role</dt><dd>Web Developer</dd></div><div><dt>University</dt><dd>United International University (UIU)</dd></div><div><dt>Education status</dt><dd>Undergraduate degree completed</dd></div></dl></div></div></section>
 <section id="education"><div class="section-head"><span class="number">03 /</span><h2>Academic background.</h2></div><div class="education"><span class="label">Undergraduate · Completed</span><h3>United International University</h3><p>UIU</p><p>Completed my undergraduate education.</p></div></section>
 <section id="work"><div class="section-head"><span class="number">04 /</span><h2>Selected projects.</h2></div><p class="project-intro">Three projects exploring agriculture, disaster response and better city services.</p><div class="projects"><article class="work project"><div class="code-mark" aria-hidden="true">01</div><div><span class="label">Agricultural marketplace</span><h3>Shombhar — The Farmers Market</h3><p>A web-based marketplace connecting farmers directly with customers and wholesalers. Includes product listings, purchase requests, multiple user roles, chat and agricultural articles.</p><ul class="tags" aria-label="Project technologies and features"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>PHP</li><li>MySQL</li></ul><a class="text-link" href="https://github.com/shakibprince83/Shombhar_The_Farmers_Market" target="_blank" rel="noopener noreferrer">View project on GitHub ↗</a></div></article>
@@ -78,5 +96,19 @@ menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')
 nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='Menu +'}));
 if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){nav.querySelectorAll('a').forEach(link=>{const active=link.getAttribute('href')==='#'+entry.target.id;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')})}})},{rootMargin:'-15% 0px -55% 0px',threshold:0});document.querySelectorAll('main section').forEach(section=>observer.observe(section))}
 document.getElementById('year').textContent=new Date().getFullYear();
+
+/* Type the full name while keeping a stable, accessible heading. */
+(()=>{
+const target=document.getElementById('typed-name');
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+const name='Md. Shakibul\nHassan Prince.';
+let timer;
+const render=text=>{target.replaceChildren();text.split('\n').forEach((line,index)=>{if(index)target.append(document.createElement('br'));target.append(document.createTextNode(line));});};
+const stop=()=>{clearTimeout(timer);render(name);};
+const run=()=>{clearTimeout(timer);if(reducedMotion.matches){render(name);return;}let count=0;let deleting=false;render('');const tick=()=>{if(document.hidden){stop();return;}count+=deleting?-1:1;render(name.slice(0,count));let delay=deleting?45:105;if(count===name.length){deleting=true;delay=2600;}else if(count===0){deleting=false;delay=650;}timer=setTimeout(tick,delay);};timer=setTimeout(tick,350);};
+reducedMotion.addEventListener('change',run);
+document.addEventListener('visibilitychange',()=>document.hidden?stop():run());
+run();
+})();
 </script>
 </body></html>
