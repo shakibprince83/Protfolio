@@ -107,6 +107,17 @@ main{position:relative;z-index:1}
 .work{grid-template-columns:minmax(0,1fr)}
 .section-head{gap:0}
 .education-list{display:grid;gap:35px}.education-list h3{margin:8px 0 0}
+
+/* Translucent content surfaces keep the moving background visible. */
+.work,.research-card,.portrait{background:rgba(240,248,242,.66);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border-color:rgba(166,201,177,.7)}
+.tags li{background:rgba(230,243,234,.62)}
+.contact{background:rgba(232,246,236,.58)}
+/* Content stays visible by default if JavaScript is unavailable. */
+.scroll-reveal{opacity:1}
+.scroll-reveal.reveal-pending{opacity:0;translate:0 24px}
+.scroll-reveal.reveal-ready{transition:opacity .65s ease,translate .65s ease}
+.scroll-reveal.is-revealed{opacity:1;translate:0 0}
+@media(prefers-reduced-motion:reduce){.scroll-reveal.reveal-pending{opacity:1;translate:none}.scroll-reveal.reveal-ready{transition:none}}
 </style>
 </head>
 <body>
@@ -174,6 +185,21 @@ const run=()=>{clearTimeout(timer);if(reducedMotion.matches){render(name);return
 reducedMotion.addEventListener('change',run);
 document.addEventListener('visibilitychange',()=>document.hidden?stop():run());
 run();
+})();
+
+/* Reveal content once as it enters the viewport. */
+(()=>{
+const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
+if(!('IntersectionObserver' in window)||motion.matches)return;
+const elements=[...document.querySelectorAll('.hero-inner,.hero-portrait,.section-head,.about-grid>div,.facts,.education-list>.education,.project-intro,.projects>.project,.more-work,.research-intro,.research-list>.research-card,#research>.research-note,.contact>h3,.contact>p,.contact>.actions,footer')];
+let observer;
+const showAll=()=>{observer?.disconnect();elements.forEach(el=>{el.classList.remove('reveal-pending');el.classList.add('is-revealed');});};
+try{
+observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.remove('reveal-pending');entry.target.classList.add('is-revealed');observer.unobserve(entry.target);}});},{threshold:0,rootMargin:'0px 0px -30px 0px'});
+elements.forEach(el=>{el.classList.add('scroll-reveal','reveal-ready');const bounds=el.getBoundingClientRect();if(bounds.top<window.innerHeight&&bounds.bottom>0){el.classList.add('is-revealed');}else{el.classList.add('reveal-pending');observer.observe(el);}});
+motion.addEventListener('change',event=>{if(event.matches)showAll();});
+window.addEventListener('beforeprint',showAll);
+}catch(error){showAll();}
 })();
 </script>
 </body></html>
