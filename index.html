@@ -118,6 +118,21 @@ main{position:relative;z-index:1}
 .scroll-reveal.reveal-ready{transition:opacity .65s ease,translate .65s ease}
 .scroll-reveal.is-revealed{opacity:1;translate:0 0}
 @media(prefers-reduced-motion:reduce){.scroll-reveal.reveal-pending{opacity:1;translate:none}.scroll-reveal.reveal-ready{transition:none}}
+
+/* Lighter glass cards with softly rounded, translucent edges. */
+.work,.research-card,.portrait{
+background:rgba(240,248,242,.34);
+border:1px solid rgba(166,201,177,.38);
+border-radius:14px;
+box-shadow:0 8px 25px rgba(25,61,42,.035);
+backdrop-filter:blur(2px);
+-webkit-backdrop-filter:blur(2px);
+}
+.work:hover,.work:focus-within,.research-card:hover{
+border-color:rgba(92,155,112,.55);
+box-shadow:0 12px 28px rgba(25,61,42,.075);
+}
+.tags li{background:rgba(230,243,234,.36);border-color:rgba(166,201,177,.4);border-radius:5px}
 </style>
 </head>
 <body>
