@@ -4,9 +4,8 @@
 
   const root = document.documentElement;
   const themeColor = document.querySelector('meta[name="theme-color"]');
-  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
   const storageKey = "portfolio-theme";
-  let preference;
+  let preference = "light";
 
   try {
     const savedTheme = localStorage.getItem(storageKey);
@@ -21,14 +20,8 @@
     themeColor?.setAttribute("content", theme === "dark" ? "#101915" : "#f0f8f2");
   }
 
-  function applySystemTheme() {
-    if (!preference) applyTheme(systemTheme.matches ? "dark" : "light");
-  }
+  applyTheme(preference);
 
-  if (preference) applyTheme(preference);
-  else applySystemTheme();
-
-  systemTheme.addEventListener("change", applySystemTheme);
   toggle.addEventListener("click", () => {
     preference = root.dataset.theme === "dark" ? "light" : "dark";
     applyTheme(preference);
