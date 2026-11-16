@@ -1,3 +1,46 @@
+(() => {
+  const toggle = document.querySelector(".theme-toggle");
+  if (!toggle) return;
+
+  const root = document.documentElement;
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const storageKey = "portfolio-theme";
+  let preference;
+
+  try {
+    const savedTheme = localStorage.getItem(storageKey);
+    if (savedTheme === "dark" || savedTheme === "light") preference = savedTheme;
+  } catch {
+    // The toggle still works when storage is unavailable.
+  }
+
+  function applyTheme(theme) {
+    root.dataset.theme = theme;
+    toggle.setAttribute("aria-pressed", String(theme === "dark"));
+    themeColor?.setAttribute("content", theme === "dark" ? "#101915" : "#f0f8f2");
+  }
+
+  function applySystemTheme() {
+    if (!preference) applyTheme(systemTheme.matches ? "dark" : "light");
+  }
+
+  if (preference) applyTheme(preference);
+  else applySystemTheme();
+
+  systemTheme.addEventListener("change", applySystemTheme);
+  toggle.addEventListener("click", () => {
+    preference = root.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(preference);
+    try {
+      localStorage.setItem(storageKey, preference);
+    } catch {
+      // Keep the current selection for this page.
+    }
+  });
+  toggle.hidden = false;
+})();
+
 const menu = document.querySelector(".menu"),
   nav = document.querySelector("nav");
 menu.addEventListener("click", () => {

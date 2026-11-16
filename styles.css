@@ -613,12 +613,30 @@ aside {
 .hero-inner {
   min-width: 0;
 }
-.hero .resume-download {
+.hero-controls {
   position: absolute;
   top: 30px;
   right: clamp(25px, 4vw, 60px);
   z-index: 2;
+  display: flex;
+  align-items: stretch;
   gap: 10px;
+}
+.hero-controls .button {
+  justify-content: center;
+  min-height: 44px;
+}
+.resume-download {
+  min-width: 150px;
+  gap: 12px;
+}
+.theme-toggle {
+  width: 44px;
+  padding: 0;
+  cursor: pointer;
+}
+.theme-toggle[hidden] {
+  display: none;
 }
 .hero h1 {
   font-weight: 700;
@@ -1444,4 +1462,43 @@ nav a.active .nav-arrow {
 
 .inline-style-1 {
   color: var(--accent);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #101915;
+  --panel: #192b22;
+  --text: #e6f4eb;
+  --muted: #b4ccbd;
+  --accent: #8bdbac;
+  --line: #365343;
+}
+[data-theme="dark"] :is(aside, .contact, .work, .research-card, .portrait) {
+  background: var(--panel);
+  border-color: var(--line);
+}
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, #101915a8, #192b22b8);
+}
+[data-theme="dark"] :is(.code-mark, .tags li, nav a:hover, nav a.active, .aside-bottom > a) {
+  background: #233b2e;
+  border-color: var(--line);
+  color: var(--accent);
+}
+[data-theme="dark"] :is(nav a, .sidebar-identity strong) {
+  color: var(--text);
+}
+[data-theme="dark"] :is(.sidebar-identity span, .aside-bottom > a:hover) {
+  color: var(--accent);
+}
+[data-theme="dark"] .aside-bottom {
+  border-color: var(--line);
+}
+[data-theme="dark"] :is(.button.primary, .button:hover, .skip, .theme-toggle[aria-pressed="true"]) {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+[data-theme="dark"] .button.primary:hover {
+  background: #adebc6;
 }
