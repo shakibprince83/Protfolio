@@ -4,32 +4,16 @@
 
   const root = document.documentElement;
   const themeColor = document.querySelector('meta[name="theme-color"]');
-  const storageKey = "portfolio-theme";
-  let preference = "light";
-
-  try {
-    const savedTheme = localStorage.getItem(storageKey);
-    if (savedTheme === "dark" || savedTheme === "light") preference = savedTheme;
-  } catch {
-    // The toggle still works when storage is unavailable.
-  }
-
   function applyTheme(theme) {
     root.dataset.theme = theme;
     toggle.setAttribute("aria-pressed", String(theme === "dark"));
     themeColor?.setAttribute("content", theme === "dark" ? "#101915" : "#f0f8f2");
   }
 
-  applyTheme(preference);
+  applyTheme("light");
 
   toggle.addEventListener("click", () => {
-    preference = root.dataset.theme === "dark" ? "light" : "dark";
-    applyTheme(preference);
-    try {
-      localStorage.setItem(storageKey, preference);
-    } catch {
-      // Keep the current selection for this page.
-    }
+    applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
   });
   toggle.hidden = false;
 })();
